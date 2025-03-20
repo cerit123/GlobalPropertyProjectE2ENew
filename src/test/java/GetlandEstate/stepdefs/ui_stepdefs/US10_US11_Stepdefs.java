@@ -36,7 +36,7 @@ public class US10_US11_Stepdefs {
 
         ReusableMethods.waitForSecond(2);
         searchPage.rentButton.click();
-        DriverManager.getConnection();
+       
     }
 
     @And("search box ın altındaki istenilen {string} seçilir")
