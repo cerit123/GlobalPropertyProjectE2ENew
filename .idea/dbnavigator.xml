@@ -9,6 +9,24 @@
     <value-preview-text-wrapping value="false" />
     <value-preview-pinned value="false" />
   </component>
+  <component name="DBNavigator.Project.DataExportManager">
+    <export-instructions>
+      <create-header value="true" />
+      <friendly-headers value="false" />
+      <quote-values-containing-separator value="true" />
+      <quote-all-values value="false" />
+      <value-separator value="" />
+      <begin-quote value="&quot;" />
+      <end-quote value="&quot;" />
+      <file-name value="Result 2.html" />
+      <file-location value="E:\Dead.Poets.Society.1989.1080p.BluRay.H264.AAC-RARBG" />
+      <scope value="GLOBAL" />
+      <destination value="FILE" />
+      <format value="HTML" />
+      <charset value="UTF-8" />
+      <charset value="UTF-8" />
+    </export-instructions>
+  </component>
   <component name="DBNavigator.Project.DatabaseAssistantManager">
     <assistants>
       <assistant-state connection-id="bae3c097-8715-46eb-a12d-d2d3a98acb22" default-profile-name="" selected-profile-name="" selected-model-name="" assistant-type="GENERIC" selected-action="SHOW_SQL" availability="UNAVAILABLE" acknowledgement="NONE">
@@ -24,7 +42,9 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="bae3c097-8715-46eb-a12d-d2d3a98acb22">
-      <console name="Connection_Property" type="STANDARD" schema="public" session="Main"><![CDATA[select * from daily_reports]]></console>
+      <console name="Connection_Property" type="STANDARD" schema="public" session="Main"><![CDATA[SELECT * FROM pg_tables WHERE schemaname = 'public';
+
+SELECT * FROM tour_requests]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">

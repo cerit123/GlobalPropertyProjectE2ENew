@@ -1,0 +1,61 @@
+package GetlandEstate.stepdefs.db_stepdefs;
+
+import GetlandEstate.utilities.ConfigReader;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class US01_DB_Stepdefs {
+
+    Connection connection;
+    ResultSet resultSet;
+
+    @Given("Database bağlantısı sağlanır")
+    public void databaseBağlantısıSağlanır() throws SQLException {
+
+         connection = DriverManager.getConnection(ConfigReader.getProperty("dbUrl"), ConfigReader.getProperty("dbUsername"), ConfigReader.getProperty("dbPassword"));
+
+    }
+
+    @And("Beklenen tablo isimleri düzenlenir")
+    public void beklenenTabloIsimleriDüzenlenir() {
+
+        List<String> expectedTableNames = Arrays.asList(
+                "category_property_keys", "confirmation_token", "daily_reports",
+                "logs", "favorites", "images", "profile_photos",
+                "category_property_values", "advert_types", "cities",
+                "cmd_exec", "personel","adverts","countries",
+                "districts", "users", "tour_requests",  "categories","contacts"
+        );
+
+    }
+
+    @When("Tablo isimlerini almak için query gönderilir")
+    public void tabloIsimleriniAlmakIçinQueryGönderilir() throws SQLException {
+
+        Statement statement = connection.createStatement();
+         resultSet = statement.executeQuery("SELECT * FROM pg_tables WHERE schemaname = 'public'");
+
+
+
+    }
+
+    @Then("Tablo isimleri dogrulanır")
+    public void tabloIsimleriDogrulanır() throws SQLException {
+
+        List<String> actualTableNames = new ArrayList<>();
+
+        while (resultSet.next()) {
+            actualTableNames.add(resultSet.getString("tablename"));
+        }
+
+        System.out.println("actualTables = " + actualTables);
+
+    }
+}
