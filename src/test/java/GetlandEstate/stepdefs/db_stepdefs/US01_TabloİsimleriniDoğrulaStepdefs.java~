@@ -44,7 +44,6 @@ public class US01_TabloİsimleriniDoğrulaStepdefs {
         Statement statement = connection.createStatement();
         resultSet = statement.executeQuery("SELECT tablename FROM pg_tables WHERE schemaname = 'public'");
 
-
     }
 
     @Then("Tablo isimleri dogrulanır")

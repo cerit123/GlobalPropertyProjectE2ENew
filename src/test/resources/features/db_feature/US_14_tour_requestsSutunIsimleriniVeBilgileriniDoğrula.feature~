@@ -1,0 +1,16 @@
+
+@US14DB
+Feature: tour_requests sutun isimlerini ve bilgilerini doğrula
+
+  @US14TC01DB
+  Scenario: TC-01 tour_requests sutun isimlerini dogrula
+    Given Database bağlantısı sağlanır
+    And Beklenen tour_requests tablosu sütun isimleri düzenlenir
+    When tour_requests tablosu sütun isimlerini almak için query gönderilir
+    Then tour_requests tablosu sütun isimleri dogrulanır
+
+    Scenario: TC-02 tour_requests bilgilerini doğrula
+      Given Database bağlantısı sağlanır
+      And Beklenen tour_requests dataları düzenlenir
+      When tour_requests dataları için query gönderilir
+      Then tour_requests datası beklenen data ile karşılaştırılır
