@@ -2,23 +2,13 @@
 
   Feature: Categories Tablosu Data Kontrolü
     @DBUS-02TC-01
-    Scenario Outline: Categories tablosundaki sütun isimlerinin doğruluğunu kontrol etme
+    Scenario: Categories tablosundaki sütun isimlerinin doğruluğunu kontrol etme
       Given veritabanına bağlanılır
       When  Categories tablosunun kontrol edilir
-      Then  aşağıdaki "<sütunIsimleri>" bulunmalıdır:
+      Then  tablonun sütun isimlerinin expected result ile uyuştuğu görülür
+      Then  Database bağlantısı kapatılır
 
-      Examples:
-        |sütunIsimleri|
-        | id          |
-        | created_at  |
-        | updated_at  |
-        | is_active   |
-        | built_in    |
-        | icon        |
-        | seq         |
-        | slug        |
-        | title       |
-
+    @DBUS-02TC-02
     Scenario: Categories tablosundaki datalarının doğruluğunu kontrol etme
       Given veritabanına bağlanılır
       When  categories tablosunun id, title, is_active, ve slug sütunları getirilir

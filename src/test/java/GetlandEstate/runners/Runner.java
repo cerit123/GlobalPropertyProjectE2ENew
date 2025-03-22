@@ -17,7 +17,7 @@ import org.junit.runner.RunWith;
 
         glue = {"GetlandEstate/stepdefs","GetlandEstate/hooks"},
 
-        tags = "@DBUS-02TC-01",
+        tags = "@DBUS-02",
 
         dryRun = false
 
