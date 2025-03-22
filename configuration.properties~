@@ -46,14 +46,18 @@ dbPassword=myPassword
 #********************************************************************
 
 #admin giris datalar?
-emailAdmin=muhammet560@admin.com
-passwordAdmin=Muhammet5601.
+emailAdmin=ftmsmz@gmail.com
+passwordAdmin=571632?Ftm.
 
 #Manager giris datalar?
-emailManager=muhammet560@manager.com
-passwordManager=Muhammet5601.
+emailManager=Akifysr@gmail.com
+passwordManager=571632Akif.
+
+
 
 #costumer giri? datalri
-emailCustomer=customer@muhammet.com
-passwordCustomer=kendiCustomerPasswordGirilecek.
+emailCustomer=hamzaysr@gmail.com
+passwordCustomer=571632Hamza.
+cityName=Adana
+
 

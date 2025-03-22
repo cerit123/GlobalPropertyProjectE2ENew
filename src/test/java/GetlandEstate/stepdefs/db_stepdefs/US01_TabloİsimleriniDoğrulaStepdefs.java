@@ -13,7 +13,7 @@ import java.util.List;
 
 public class US01_TabloİsimleriniDoğrulaStepdefs {
 
-    Connection connection;
+    public static Connection connection;
     ResultSet resultSet;
     List<String> expectedTableNames;
     List<String> actualTableNames;
