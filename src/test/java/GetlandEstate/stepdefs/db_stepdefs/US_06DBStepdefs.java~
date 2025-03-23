@@ -1,6 +1,5 @@
-package GetlandEstate.stepdefs.api_stepdefs;
+package GetlandEstate.stepdefs.db_stepdefs;
 
-import GetlandEstate.stepdefs.db_stepdefs.US01_TabloİsimleriniDoğrulaStepdefs;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
