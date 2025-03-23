@@ -21,7 +21,7 @@ import org.junit.runner.RunWith;
         tags = "@DBUS-02",
 =======
         tags = "",
->>>>>>> master
+>>>>>>> 7fa15270f05d191ea49cb4335305c1f879c15f5c
 
         dryRun = false
 
