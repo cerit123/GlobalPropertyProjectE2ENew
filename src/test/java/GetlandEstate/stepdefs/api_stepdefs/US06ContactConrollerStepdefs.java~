@@ -45,8 +45,4 @@ public class US06ContactConrollerStepdefs {
     }
 
 
-    @Then("Yeni bir iletisim mesaji olusturuldigi dogrulanir")
-    public void yeniBirIletisimMesajiOlusturuldigiDogrulanir1() {
-
-    }
 }
