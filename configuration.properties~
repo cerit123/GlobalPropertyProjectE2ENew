@@ -41,11 +41,25 @@ dbPassword=myPassword
 
 #********************************************************************
 #******** herkes kendi giris datalarini yazacak ******************
-#******** KEY  BÖLÜMÜ DEGISTIRLMEYECEK ******************
-#******** sadece VALUE bölümü degistirilsin ******************
+#******** KEY  BÃ–LÃœMÃœ DEGISTIRLMEYECEK ******************
+#******** sadece VALUE bÃ¶lÃ¼mÃ¼ degistirilsin ******************
 #********************************************************************
 
 #admin giris datalar?
+
+emailAdmin=muhammet560@admin.com
+passwordAdmin=Muhammet5601.
+
+#Manager giris datalar?
+emailManager=muhammet560@manager.com
+passwordManager=Muhammet5601.
+
+
+
+#costumer giri? datalri
+emailCustomer=muhammet560@customer.com
+passwordCustomer=Muhammet5601.
+
 emailAdmin=admin@muhammet.com
 passwordAdmin=kendiAdminPasswordGirilecek
 
@@ -59,4 +73,5 @@ passwordCustomer=kendiCustomerPasswordGirilecek.
 
 #ozceritcustomer
 emailCustomer
+
 
