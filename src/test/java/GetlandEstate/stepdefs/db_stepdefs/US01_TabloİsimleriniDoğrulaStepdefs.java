@@ -21,7 +21,8 @@ public class US01_TabloİsimleriniDoğrulaStepdefs {
     @Given("Database bağlantısı sağlanır")
     public void databaseBağlantısıSağlanır() throws SQLException {
 
-        connection = DriverManager.getConnection(ConfigReader.getProperty("dbUrl"), ConfigReader.getProperty("dbUsername"), ConfigReader.getProperty("dbPassword"));
+        connection = DriverManager.getConnection(ConfigReader.getProperty("dbUrl"),
+                ConfigReader.getProperty("dbUsername"), ConfigReader.getProperty("dbPassword"));
 
     }
 

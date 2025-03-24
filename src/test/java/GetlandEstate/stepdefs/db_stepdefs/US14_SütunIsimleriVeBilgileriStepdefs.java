@@ -34,8 +34,6 @@ public class US14_SütunIsimleriVeBilgileriStepdefs {
                 "status", "tour_date", "tour_time", "advert_id",
                 "guest_user_id", "owner_user_id"
         );
-
-
     }
 
     @When("tour_requests tablosu sütun isimlerini almak için query gönderilir")
@@ -45,6 +43,7 @@ public class US14_SütunIsimleriVeBilgileriStepdefs {
         resultSet = statement.executeQuery("SELECT column_name \n" +
                 "FROM information_schema.columns \n" +
                 "WHERE table_name = 'tour_requests'");
+
 
 
     }
@@ -82,10 +81,12 @@ public class US14_SütunIsimleriVeBilgileriStepdefs {
 
     }
 
+    //TC02 Stepdefs
+
     @And("Beklenen tour_requests dataları düzenlenir")
     public void beklenenTour_requestsDatalarıDüzenlenir() {
 
-       expectedData = new US14_DB_tour_requestsPojo(1,"Aug 6, 2024, 7:13:23PM","Aug 9, 2024, 12:00:01AM",2,"Aug 8, 2024, 12:00:00AM","Jan 1, 1970, 6:00:00AM",37,39,8);
+       expectedData = new US14_DB_tour_requestsPojo(1,"Aug 6, 2024, 7:13:23 PM","Aug 9, 2024, 12:00:01AM",2,"Aug 8, 2024, 12:00:00AM","Jan 1, 1970, 6:00:00AM",37,39,8);
 
 
     }
