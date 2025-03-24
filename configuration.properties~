@@ -1,0 +1,61 @@
+browser=chrome
+url=http://64.227.123.49
+baseUrl=http://64.227.123.49:8092
+
+
+#Admin report islemleri datalar
+admin=admin@gmail.com
+password1=admin123!
+manager=akifmanager@gmail.com
+password2=Manager123@
+startDate=03/12/2025
+endDate=03/13/2025
+amount=4
+date=2025-05-07
+
+#costumer datalri
+emailCostumer=yaseen.kasyn@thefluent.org
+passwordCostumer=yaseen.kasynA123
+newPasswordCostumer=NewPassword123.
+invalidCustomerEmail=invalidemailthefluent.org
+invalidCustomerEmail2=invalidemail@thefluentcom
+
+
+#Contact Message datalari
+contactfirstName=ab
+contactlastName=cd
+contactemail=abcd@gmail.com
+contactDate=17.11.2025
+
+advertTitle=New Test Advert
+advertPrice=999999999
+advertAddress= Dumlupinar Mah. 52
+advertSize=240
+advertBedrooms=6
+
+#DATABASE Temel Datalari
+dbUrl=jdbc:postgresql://64.227.123.49:5432/prettierhomes
+dbUsername=techprotester
+dbPassword=myPassword
+
+
+#********************************************************************
+#******** herkes kendi giris datalarini yazacak ******************
+#******** KEY  BÖLÜMÜ DEGISTIRLMEYECEK ******************
+#******** sadece VALUE bölümü degistirilsin ******************
+#********************************************************************
+
+#admin giris datalar?
+emailAdmin=muhammet560@admin.com
+passwordAdmin=Muhammet5601.
+
+#Manager giris datalar?
+emailManager=muhammet560@manager.com
+passwordManager=Muhammet5601.
+
+
+
+#costumer giri? datalri
+emailCustomer=muhammet560@customer.com
+passwordCustomer=Muhammet5601.
+
