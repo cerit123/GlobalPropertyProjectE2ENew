@@ -24,16 +24,19 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="bae3c097-8715-46eb-a12d-d2d3a98acb22">
-      <console name="Connection_Property" type="STANDARD" schema="public" session="Main"><![CDATA[SELECT * from categories]]></console>
+      <console name="Connection_Property" type="STANDARD" schema="public" session="Main"><![CDATA[SELECT column_name
+FROM information_schema.columns
+WHERE table_schema = 'public' AND table_name = 'daily_reports';
+
+select * from daily_reports;
+select * from daily_reports where id IN (10, 11);]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
     <last-used-providers />
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="bae3c097-8715-46eb-a12d-d2d3a98acb22" object-ref="consoles/Connection_Property" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="bae3c097-8715-46eb-a12d-d2d3a98acb22" />
