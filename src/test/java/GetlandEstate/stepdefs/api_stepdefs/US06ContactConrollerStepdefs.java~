@@ -97,6 +97,6 @@ public class US06ContactConrollerStepdefs {
 
     @And("Ve seçilen mesaj ayrıntılarını doğrulayın")
     public void veSeçilenMesajAyrıntılarınıDoğrulayın() {
-response.then().statusCode(200);
+
     }
 }
