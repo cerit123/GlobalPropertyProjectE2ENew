@@ -17,11 +17,17 @@ import org.junit.runner.RunWith;
 
         glue = {"GetlandEstate/stepdefs","GetlandEstate/hooks"},
 
+<<<<<<< HEAD
+=======
+
+        tags = "@apiAdmin ",
+
+>>>>>>> master
 
         tags = "@US14DB",
 
 
-        dryRun = true
+        dryRun = false
 
 )
 public class Runner {
