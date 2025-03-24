@@ -18,10 +18,10 @@ import org.junit.runner.RunWith;
         glue = {"GetlandEstate/stepdefs","GetlandEstate/hooks"},
 
 
-        tags = "@apiAdmin ",
+        tags = "",
 
 
-        dryRun = true
+        dryRun = false
 
 )
 public class Runner {
