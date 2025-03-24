@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DBNavigator.Project.DDLFileAttachmentManager">
+    <mappings />
+    <preferences />
+  </component>
   <component name="DBNavigator.Project.DataEditorManager">
     <record-view-column-sorting-type value="BY_INDEX" />
     <value-preview-text-wrapping value="false" />
@@ -36,21 +40,26 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="bae3c097-8715-46eb-a12d-d2d3a98acb22">
+      <console name="Connection" type="STANDARD" schema="public" session="Main"><![CDATA[SELECT column_name
+                FROM information_schema.columns
+                WHERE table_name = 'tour_requests'
+
+
+SELECT * FROM tour_requests WHERE id = 1]]></console>
       <console name="Connection_Property" type="STANDARD" schema="public" session="Main"><![CDATA[select * from countries]]></console>
-    </connection>
-    <connection id="50824446-c929-4167-8faa-2d89576a8274">
-      <console name="Connection" type="STANDARD" schema="" session="Main" />
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
     <last-used-providers />
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files />
+    <open-files>
+      <object connection-id="bae3c097-8715-46eb-a12d-d2d3a98acb22" object-ref="consoles/Connection" />
+      <object connection-id="bae3c097-8715-46eb-a12d-d2d3a98acb22" object-ref="consoles/Connection_Property" />
+    </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="bae3c097-8715-46eb-a12d-d2d3a98acb22" />
-    <connection id="50824446-c929-4167-8faa-2d89576a8274" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
     <filter-actions connection-id="bae3c097-8715-46eb-a12d-d2d3a98acb22" dataset="pg_catalog.pg_index" active-filter-id="" />
@@ -603,5 +612,6 @@
   </component>
   <component name="DBNavigator.Project.StatementExecutionManager">
     <execution-variables />
+    <execution-variable-types />
   </component>
 </project>

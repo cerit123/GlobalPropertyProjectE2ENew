@@ -34,8 +34,6 @@ public class US14_SütunIsimleriVeBilgileriStepdefs {
                 "status", "tour_date", "tour_time", "advert_id",
                 "guest_user_id", "owner_user_id"
         );
-
-
     }
 
     @When("tour_requests tablosu sütun isimlerini almak için query gönderilir")
@@ -45,6 +43,7 @@ public class US14_SütunIsimleriVeBilgileriStepdefs {
         resultSet = statement.executeQuery("SELECT column_name \n" +
                 "FROM information_schema.columns \n" +
                 "WHERE table_name = 'tour_requests'");
+
 
 
     }
