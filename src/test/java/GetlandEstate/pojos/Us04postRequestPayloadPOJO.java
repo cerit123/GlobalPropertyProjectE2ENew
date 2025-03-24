@@ -2,7 +2,7 @@ package GetlandEstate.pojos;
 
 import java.io.Serializable;
 
-public class Us04postRequestPOJO implements Serializable {
+public class Us04postRequestPayloadPOJO implements Serializable {
 	private String title;
 
 	public void setTitle(String title){
@@ -13,10 +13,10 @@ public class Us04postRequestPOJO implements Serializable {
 		return title;
 	}
 
-	public Us04postRequestPOJO() {
+	public Us04postRequestPayloadPOJO() {
 	}
 
-	public Us04postRequestPOJO(String title) {
+	public Us04postRequestPayloadPOJO(String title) {
 		this.title = title;
 	}
 
