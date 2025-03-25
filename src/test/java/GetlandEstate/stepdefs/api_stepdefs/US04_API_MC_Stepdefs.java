@@ -1,6 +1,5 @@
 package GetlandEstate.stepdefs.api_stepdefs;
 
-import GetlandEstate.base_url.BaseUrl;
 import GetlandEstate.pojos.Us04postRequestPayloadPOJO;
 import com.github.javafaker.Faker;
 import io.cucumber.java.en.And;
@@ -17,7 +16,7 @@ import java.util.Random;
 import static GetlandEstate.base_url.BaseUrl.spec;
 import static io.restassured.RestAssured.given;
 
-public class US04_APIStepdefs {
+public class US04_API_MC_Stepdefs {
     static Us04postRequestPayloadPOJO payload;
     static Us04postRequestPayloadPOJO gecersizPayload;
    static Response response;
