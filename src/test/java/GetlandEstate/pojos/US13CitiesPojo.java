@@ -2,21 +2,21 @@ package GetlandEstate.pojos;
 
 import java.io.Serializable;
 
-public class US12CountryPojo implements Serializable {
+public class US13CitiesPojo implements Serializable {
 	private int id;
 	private String name;
 	private LocationPojo location;
 
-	public US12CountryPojo() {
-	}
+    public US13CitiesPojo() {
+    }
 
-	public US12CountryPojo(LocationPojo location, int id, String name) {
-		this.location = location;
-		this.id = id;
-		this.name = name;
-	}
+    public US13CitiesPojo(int id, String name, LocationPojo location) {
+        this.id = id;
+        this.name = name;
+        this.location = location;
+    }
 
-	public void setId(int id){
+    public void setId(int id){
 		this.id = id;
 	}
 
@@ -43,7 +43,7 @@ public class US12CountryPojo implements Serializable {
 	@Override
  	public String toString(){
 		return 
-			"US12CountryPojo{" + 
+			"US13CitiesPojo{" + 
 			"id = '" + id + '\'' + 
 			",name = '" + name + '\'' + 
 			",location = '" + location + '\'' + 

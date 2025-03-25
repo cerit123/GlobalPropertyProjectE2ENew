@@ -2,23 +2,31 @@ package GetlandEstate.pojos;
 
 import java.io.Serializable;
 
-public class LocationPojo implements Serializable {
-	private Object lat;
-	private Object lng;
+public class LocationPojo {
+	private double lat;
+	private double lng;
 
-	public void setLat(Object lat){
+	public LocationPojo() {
+	}
+
+	public LocationPojo(double lat, double lng) {
 		this.lat = lat;
-	}
-
-	public Object getLat(){
-		return lat;
-	}
-
-	public void setLng(Object lng){
 		this.lng = lng;
 	}
 
-	public Object getLng(){
+	public void setLat(double lat){
+		this.lat = lat;
+	}
+
+	public double getLat(){
+		return lat;
+	}
+
+	public void setLng(double lng){
+		this.lng = lng;
+	}
+
+	public double getLng(){
 		return lng;
 	}
 

@@ -1,0 +1,51 @@
+package GetlandEstate.stepdefs.api_stepdefs;
+
+import GetlandEstate.pojos.US13LocationPojopojo;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+
+import static GetlandEstate.base_url.BaseUrl.spec;
+
+public class US13CitiesConrollerStepdefs {
+    US13ResponsePojo expectedData;
+    @Given("create get URL for user")
+    public void createGetURLForUser() {
+        //http://64.227.123.49:8092/cities/search/82
+
+        spec.pathParams("first","cities","second","search","third","82");
+
+    }
+
+
+    @And("edit Expected data for the user")
+    public void editExpectedDataForTheUser() {
+       /* {
+            "id": 1354,
+                "name": "Auvergne",
+                "location": {
+            "lat": 45.71001315,
+                    "lng": 3.1531802964975517
+        }
+        },*/
+
+        US13LocationPojopojo locationPojo = new US13LocationPojopojo(45.71001315,3.1531802964975517);
+
+         expectedData = new US13ResponsePojo(1354,"Auvergne",locationPojo);
+    }
+
+    @When("send {string} request for user and receive response")
+    public void sendRequestForUserAndReceiveResponse(String arg0) {
+    }
+
+    @Then("verify that status code is {int}")
+    public void verifyThatStatusCodeIs(int arg0) {
+    }
+
+    @Then("verify the response body for user")
+    public void verifyTheResponseBodyForUser() {
+    }
+
+
+}

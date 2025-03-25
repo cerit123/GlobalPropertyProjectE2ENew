@@ -24,6 +24,8 @@ public class US06GetPojo implements Serializable {
 		this.createdAt = createdAt;
 	}
 
+
+
 	public void setId(int id){
 		this.id = id;
 	}

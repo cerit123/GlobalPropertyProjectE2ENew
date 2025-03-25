@@ -6,13 +6,17 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
-import org.junit.Assert;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static GetlandEstate.base_url.BaseUrl.spec;
 import static io.restassured.RestAssured.given;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class US06ContactConrollerStepdefs {
 
@@ -20,7 +24,9 @@ public class US06ContactConrollerStepdefs {
     private Response response;
     US06GetPojo actualData;
     US06GetPojo expectedData;
+    Response response1;
 
+    //TC1-----------------------
 
     @Given("Base URL kullanilir")
     public void baseURLKullanilir() {
@@ -29,32 +35,23 @@ public class US06ContactConrollerStepdefs {
 
     @When("Yeni bir iletisim mesaji  olusturulur")
     public void yeniBirIletisimMesajiOlusturulur() {
-
         payload = new US06PostPayloadPojo("Fatma", "yasar", "ftmsmz@gmail.com", "merhaba hayat", true);
-        Response response = given(spec).body(payload).post("{first}");
-        // Yanıtı kontrol etme
-        if (response == null) {
-            System.out.println("API yanıtı alınamadı!");
-        } else {
-            System.out.println("API yanıtı: " + response.asString());
-        }
+        response = given(spec).body(payload).post("{first}");
+
     }
 
     @Then("Staus code {int} olmalidir")
     public void stausCodeOlmalidir(int statusCode) {
-        payload = new US06PostPayloadPojo("Fatma", "yasar", "ftmsmz@gmail.com", "merhaba hayat", true);
-        Response response = given(spec).body(payload).post("{first}");
-        Assert.assertEquals(statusCode, response.statusCode());
+        assertEquals(statusCode, response.statusCode());
 
     }
 
     @And("Yeni bir iletisim mesaji olusturuldigi dogrulanir")
     public void yeniBirIletisimMesajiOlusturuldigiDogrulanir() {
-        payload = new US06PostPayloadPojo("Fatma", "yasar", "ftmsmz@gmail.com", "merhaba hayat", true);
-        response = given(spec).body(payload).post("{first}");
+
         String expectedMessage = "Contact message saved successfully.";
         String actualMessage = response.asString();
-        Assert.assertEquals("Beklenen mesaj ile gelen mesaj uyusmuyor", expectedMessage, actualMessage);
+        assertEquals("Beklenen mesaj ile gelen mesaj uyusmuyor", expectedMessage, actualMessage);
 
     }
 
@@ -62,41 +59,97 @@ public class US06ContactConrollerStepdefs {
 
     @When("Tum mesajlardan ilki iletisim mesaji getirilir")
     public void tumMesajlardanIlkiIletisimMesajiGetirilir() {
-        spec.pathParam("first", "contact-messages");
-        Response response1 = given(spec).get("{first}");
-        List<US06GetPojo> actualData = response1.jsonPath().getList("content", US06GetPojo.class);
-        System.out.println("actualData = " + actualData);
+        spec.pathParam("first", "contact-messages")
+                .queryParam("query", "merhaba hayat")
+                .queryParam("status", "true")
+                .queryParam("page", 0)
+                .queryParam("size", 20)
+                .queryParam("sort", "createdAt")
+                .queryParam("type", "DESC");
+
+        expectedData = new US06GetPojo
+                (2540, "Fatma", "yasar", "ftmsmz@gmail.com", "merhaba hayat", true, "2025-03-25T09:38:32.004796");
+
+        Response response2 = given(spec).get("{first}");
+        actualData = response2.jsonPath().getObject("content[0]", US06GetPojo.class);
+
+
     }
 
 
     @And("Yeni bir iletisim mesaji alindigi dogrulanir")
     public void yeniBirIletisimMesajiAlindigiDogrulanir() {
 
-        spec.pathParams("first", "contact-messages", "second",2519 );
-        payload = new US06PostPayloadPojo("Fatma", "yasar", "ftmsmz@gmail.com", "merhaba hayat", true);
-        response = given(spec).body(payload).get("{first}/{second}");
-        System.out.println("Response Body: " + response.getBody().asString());
+        assertEquals(actualData.getId(), expectedData.getId());
+        assertEquals(actualData.getFirstName(), expectedData.getFirstName());
+        assertEquals(actualData.getLastName(), expectedData.getLastName());
+        assertEquals(actualData.getMessage(), expectedData.getMessage());
+        assertEquals(actualData.getCreatedAt(), expectedData.getCreatedAt());
 
-        actualData = response.jsonPath().getObject("content[0]", US06GetPojo.class);
-        String expectedMessage = "merhaba hayat";
-        System.out.println("actualData: " + actualData);
 
-        String actualMessage = actualData.getMessage();
-        Assert.assertEquals("Beklenen mesaj ile gelen mesaj uyusmuyor", expectedMessage, actualMessage);
     }
 
     //TC3-------------------------
     @When("Belirli bir iletisim mesaji ID göre alın")
     public void belirliBirIletisimMesajiIDGöreAlın() {
-        // Get the ID of the message to retrieve
-        int messageId = 2417; // Replace with the actual ID
-        Response response = given(spec).pathParam("id", messageId).get("{first}/{id}");
-        // Store the response in a variable
-        this.response = response;
+
+        spec.pathParams("first", "contact-messages", "second", 2540);
+
+        expectedData = new US06GetPojo
+                (2540, "Fatma", "yasar", "ftmsmz@gmail.com", "merhaba hayat", true, "2025-03-25T09:38:32.004796");
+
+        response1 = given(spec).get("{first}/{second}");
+        actualData = response1.jsonPath().getObject("", US06GetPojo.class);
+
+
     }
 
     @And("Ve seçilen mesaj ayrıntılarını doğrulayın")
-    public void veSeçilenMesajAyrıntılarınıDoğrulayın() {
+    public void veSeçilenMesajAyrıntılarınıDogrulayın() {
 
+        assertEquals(actualData.getId(), expectedData.getId());
+        assertEquals(actualData.getFirstName(), expectedData.getFirstName());
+        assertEquals(actualData.getLastName(), expectedData.getLastName());
+        assertEquals(actualData.getMessage(), expectedData.getMessage());
+        assertEquals(actualData.getCreatedAt(), expectedData.getCreatedAt());
+
+
+    }
+
+    //TC4----------------
+    @When("Belirli bir iletisim mesaji guncellenir")
+    public void belirliBirIletisimMesajiGuncellenir() {
+        spec.pathParams("first", "contact-messages", "second", 2557);
+
+        expectedData = new US06GetPojo
+                (2540, "Fatma", "yasar", "ftmsmz@gmail.com", "merhaba hayat", true, "2025-03-25T09:38:32.004796");
+        response1 = given(spec).get("{first}/{second}");
+        actualData = response1.jsonPath().getObject("", US06GetPojo.class);
+
+        assertEquals(actualData.getId(), expectedData.getId());
+        assertEquals(actualData.getFirstName(), expectedData.getFirstName());
+        assertEquals(actualData.getLastName(), expectedData.getLastName());
+        assertEquals(actualData.getMessage(), expectedData.getMessage());
+        assertEquals(actualData.getCreatedAt(), expectedData.getCreatedAt());
+
+
+
+    }
+
+    //TC5 DEL.ID-------------------------------
+    @Given("Belirli bir mesaj silinir")
+    public void belirliBirMesajSilinir() {
+        spec.pathParams("first", "contact-messages", "second", 2556);
+
+        Map<String, Object> expectedData = new HashMap<>();
+
+        response = given(spec).when().delete("{first}/{second}");
+
+        // Verify that the response is successful
+        assertEquals(200, response.getStatusCode());
+
+        // Verify that the message is deleted
+        Response responseAfterDelete = given(spec).when().get("{first}/{second}");
+        assertEquals(2556, responseAfterDelete.getStatusCode());
     }
 }
