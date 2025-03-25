@@ -18,11 +18,11 @@ import org.junit.runner.RunWith;
         glue = {"GetlandEstate/stepdefs","GetlandEstate/hooks"},
 
 
-        tags = "@DBUS-04TC-01",
+        tags = "@DBUS-04TC-02",
 
 
       
-        tags = "",
+
 
 
 
