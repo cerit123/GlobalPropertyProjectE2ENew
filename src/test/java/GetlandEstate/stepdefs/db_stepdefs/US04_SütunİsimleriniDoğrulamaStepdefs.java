@@ -5,6 +5,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -45,6 +46,15 @@ public class US04_SütunİsimleriniDoğrulamaStepdefs {
 
         while (resultSet.next()) {
             actualTableNames.add(resultSet.getString("contacts"));
+
+
+            Assert.assertTrue(actualTableNames.contains("id"));
+            Assert.assertTrue(actualTableNames.contains("created_at"));
+            Assert.assertTrue(actualTableNames.contains("email"));
+            Assert.assertTrue(actualTableNames.contains("first_name"));
+            Assert.assertTrue(actualTableNames.contains("last_name"));
+            Assert.assertTrue(actualTableNames.contains("message"));
+            Assert.assertTrue(actualTableNames.contains("status"));
         }
     }
 
@@ -81,12 +91,30 @@ public class US04_SütunİsimleriniDoğrulamaStepdefs {
     @And("Contacts tablosundan {int} , {int} id numaralı sütunlar çağrılır.")
     public void contactsTablosundanIdNumaralıSütunlarÇağrılır(int arg0, int arg1) throws SQLException {
 
-        PreparedStatement pstmt = connection.prepareStatement("SELECT * FROM contacts WHERE id IN (2409, 2013)");
-        int id1 = 2409;
-        pstmt.setInt(1, id1);
-        int id2 = 2413;
-        pstmt.setInt(2, id2);
+        PreparedStatement pstmt = connection.prepareStatement("SELECT * FROM contacts WHERE id IN (2409, 2413)");
+        int expectedId1 = 2409;
+        pstmt.setInt(1,expectedId1 );
+        int expectedId2 = 2413;
+        pstmt.setInt(2,expectedId2 );
         resultSet = pstmt.executeQuery();
+
+        Assert.assertTrue(actualTableNames.contains("2409"));
+        Assert.assertTrue(actualTableNames.contains("2413"));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -102,6 +130,10 @@ public class US04_SütunİsimleriniDoğrulamaStepdefs {
                     ", Status: " + resultSet.getString("status"));
         } catch (SQLException e) {
             e.printStackTrace();
+
+            Assert.assertEquals(expectedTableNames,resultSet.getInt("2409"));
+            Assert.assertEquals(actualTableNames,resultSet.getInt("2413"));
+
         }
     }
         }
