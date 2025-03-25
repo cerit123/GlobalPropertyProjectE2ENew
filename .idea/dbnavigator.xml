@@ -38,9 +38,6 @@
     <connection id="bae3c097-8715-46eb-a12d-d2d3a98acb22">
       <console name="Connection_Property" type="STANDARD" schema="public" session="Main"><![CDATA[select * from countries]]></console>
     </connection>
-    <connection id="50824446-c929-4167-8faa-2d89576a8274">
-      <console name="Connection" type="STANDARD" schema="" session="Main" />
-    </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
     <last-used-providers />
@@ -50,7 +47,6 @@
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="bae3c097-8715-46eb-a12d-d2d3a98acb22" />
-    <connection id="50824446-c929-4167-8faa-2d89576a8274" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
     <filter-actions connection-id="bae3c097-8715-46eb-a12d-d2d3a98acb22" dataset="pg_catalog.pg_index" active-filter-id="" />
