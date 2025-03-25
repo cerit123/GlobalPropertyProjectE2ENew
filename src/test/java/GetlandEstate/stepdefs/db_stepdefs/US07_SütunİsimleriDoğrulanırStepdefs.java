@@ -5,6 +5,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -48,6 +49,15 @@ public class US07_SütunİsimleriDoğrulanırStepdefs {
 
         while (resultSet.next()) {
             actualTableNames.add(resultSet.getString("countries"));
+
+
+            //Assert.assertEquals(expectedTableNames,resultSet.getString("countries"));
+            //Assert.assertEquals(actualTableNames,resultSet.getString("countries"));
+
+            //Assert.assertEquals("John Doe", resultSet.getString("contacts"));
+            Assert.assertTrue(actualTableNames.contains("John Doe"));
+            Assert.assertTrue(actualTableNames.contains("John Doe"));
+            //Assert.assertEquals("Beklenen Değer", resultSet.getString("contacts"));
         }
 
 
@@ -91,6 +101,12 @@ public class US07_SütunİsimleriDoğrulanırStepdefs {
                     ", Lat: " + resultSet.getDouble("lat") +
                     ", Lng: " + resultSet.getDouble("lng") +
                     ", Name: " + resultSet.getString("name"));
+
+
+            //Assert.assertEquals(expectedData.id,resultSet1.getInt("id"));
+
+            Assert.assertTrue(actualTableNames.contains("John Doe"));
+            Assert.assertTrue(actualTableNames.contains("John Doe"));
         }
     }
 }

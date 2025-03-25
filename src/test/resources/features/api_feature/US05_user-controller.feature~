@@ -34,5 +34,3 @@ Feature: API User Controller Testleri
 
   Scenario: TC04 - User Register DELETE Testi
     Given User controller DELETE için URL düzenlenir
-    When User controller için DELETE request gönderilir ve response alınır
-    Then User controller DELETE için Status Code 200 olduğu doğrulanır

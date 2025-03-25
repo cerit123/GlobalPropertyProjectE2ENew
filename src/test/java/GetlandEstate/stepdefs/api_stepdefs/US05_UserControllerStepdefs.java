@@ -1,8 +1,10 @@
 package GetlandEstate.stepdefs.api_stepdefs;
 
 import GetlandEstate.base_url.BaseUrl;
+import GetlandEstate.pojos.US05_UserControllerPatchPayloadPojo;
 import GetlandEstate.pojos.US05_UserControllerPayloadPojo;
 import GetlandEstate.pojos.US05_UserControllerPostResponsePojo;
+import GetlandEstate.utilities.ConfigReader;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -19,6 +21,8 @@ public class US05_UserControllerStepdefs {
     US05_UserControllerPostResponsePojo actualData;
     US05_UserControllerPostResponsePojo expectedData;
     static int userId;
+    US05_UserControllerPatchPayloadPojo patchPayload;
+
 
 
     @Given("User register için URL düzenlenir")
@@ -31,7 +35,7 @@ public class US05_UserControllerStepdefs {
     @And("User register için payload düzenlenir")
     public void userRegisterIçinPayloadDüzenlenir() {
 
-        payloadPojo = new US05_UserControllerPayloadPojo("APItest", "APItest", "(213) 651-4776", "123456.M", "Zb4ç4yY@example.com");
+        payloadPojo = new US05_UserControllerPayloadPojo("APItest", "APItest", "(213) 651-4776", ConfigReader.getProperty("passwordCustomer"), ConfigReader.getProperty("emailCustomer"));
 
     }
 
@@ -65,6 +69,8 @@ public class US05_UserControllerStepdefs {
     }
 
 
+    //TC02 StepDefs
+
     @Given("User controller GET için URL düzenlenir")
     public void userControllerGETIçinURLDüzenlenir() {
 
@@ -78,7 +84,7 @@ public class US05_UserControllerStepdefs {
     public void userControllerGETIçinPayloadDüzenlenir() {
 
         expectedData = new US05_UserControllerPostResponsePojo
-                (userId, "APItest", "APItest", "Zb4ç4yY@example.com", "(213) 651-4776");
+                (userId, "APItest", "APItest", ConfigReader.getProperty("emailCustomer"), "(213) 651-4776");
 
     }
 
@@ -95,14 +101,14 @@ public class US05_UserControllerStepdefs {
     @Then("User controller GET için Status Code {int} olduğu doğrulanır")
     public void userControllerGETIçinStatusCodeOlduğuDoğrulanır(int statusCode) {
 
-        Assert.assertEquals(200,response.statusCode());
+        Assert.assertEquals(200, response.statusCode());
 
     }
 
     @And("User controller GET için response body dogrulanır")
     public void userControllerGETIçinResponseBodyDogrulanır() {
 
-        Assert.assertEquals(expectedData.getId(),actualData.getId());
+        Assert.assertEquals(expectedData.getId(), actualData.getId());
         Assert.assertEquals(expectedData.getFirstName(), actualData.getFirstName());
         Assert.assertEquals(expectedData.getLastName(), actualData.getLastName());
         Assert.assertEquals(expectedData.getEmail(), actualData.getEmail());
@@ -110,6 +116,79 @@ public class US05_UserControllerStepdefs {
 
 
     }
+
+
+    //TC03 StepsDefs
+
+    @Given("User controller PATCH için URL düzenlenir")
+    public void userControllerPATCHIçinURLDüzenlenir() {
+
+        BaseUrl.spec.pathParams("first", "users", "second", "auth");
+
+    }
+
+    @And("User controller PATCH için payload düzenlenir")
+    public void userControllerPATCHIçinPayloadDüzenlenir() {
+
+        patchPayload = new US05_UserControllerPatchPayloadPojo
+                ("customer", "Muhamme", "(544) 666-2221", ConfigReader.getProperty("passwordCustomer"), ConfigReader.getProperty("emailCustomer"), "CUSTOMER");
+
+    }
+
+    @When("User controller için PATCH request gönderilir ve response alınır")
+    public void userControllerIçinPATCHRequestGönderilirVeResponseAlınır() {
+
+        response = given(BaseUrl.spec).body(patchPayload).when().patch("{first}/{second}");
+        response.prettyPrint();
+        actualData = response.as(US05_UserControllerPostResponsePojo.class);
+
+    }
+
+    @Then("User controller PATCH için Status Code {int} olduğu doğrulanır")
+    public void userControllerPATCHIçinStatusCodeOlduğuDoğrulanır(int statusCode) {
+
+        Assert.assertEquals(statusCode, response.statusCode());
+
+    }
+
+    @And("User controller PATCH için response body dogrulanır")
+    public void userControllerPATCHIçinResponseBodyDogrulanır() {
+
+        Assert.assertEquals(patchPayload.getFirstName(), actualData.getFirstName());
+        Assert.assertEquals(patchPayload.getLastName(), actualData.getLastName());
+        Assert.assertEquals(patchPayload.getEmail(), actualData.getEmail());
+        Assert.assertEquals(patchPayload.getPhone(), actualData.getPhone());
+
+    }
+
+    //TC04 StepDefs
+
+
+    @Given("User controller DELETE için URL düzenlenir")
+    public void userControllerDELETEIçinURLDüzenlenir() {
+
+        BaseUrl.spec.pathParams("first", "users", "second", "auth");
+
+    }
+
+    @When("User controller için DELETE request gönderilir ve response alınır")
+    public void userControllerIçinDELETERequestGönderilirVeResponseAlınır() {
+
+        response=given(BaseUrl.spec).delete("{first}/{second}");
+
+    }
+
+    @Then("User controller DELETE için Status Code {int} olduğu doğrulanır")
+    public void userControllerDELETEIçinStatusCodeOlduğuDoğrulanır(int statusCode) {
+
+        Assert.assertEquals(statusCode, response.statusCode());
+
+    }
+
+
+
+
+
 
 
 }
