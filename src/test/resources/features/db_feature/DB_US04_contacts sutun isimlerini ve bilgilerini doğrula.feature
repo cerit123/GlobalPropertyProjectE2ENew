@@ -6,11 +6,10 @@ Feature:  Contacts Tablosu Data Kontrolü
     Given Veritabanına bağlanılır.
     When  Contacts sütun tablosu çağrılır
     And   Contacts sütundaki veriler eksiksiz gelmeli
-    Then  Database bağlantısı kapatılır.
+
 
   @DBUS-04TC-02
   Scenario:  Contacts sutun isimlerini ve bilgilerini doğrula
     Given Veritabanına bağlanılır.
     When  Contacts tablosunun id, created_at,email,first_name,last_name,message,status sütunları getirilir.
     And   Contacts tablosundan 2409 , 2413 id numaralı sütunlar çağrılır.
-    Then  Database bağlantısı kapatılır.

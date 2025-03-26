@@ -1,0 +1,58 @@
+package GetlandEstate.pojos;
+
+import java.io.Serializable;
+
+public class US13LocationPojopojo implements Serializable {
+	private int id;
+	private String name;
+	private Locationpojo location;
+
+	public US13LocationPojopojo() {
+	}
+
+	public US13LocationPojopojo(int id, String name, Locationpojo location) {
+		this.id = id;
+		this.name = name;
+		this.location = location;
+	}
+
+	public US13LocationPojopojo(double v, double v1) {
+		double v2 = v1;
+		double v3 = v;
+	}
+
+
+	public void setId(int id){
+		this.id = id;
+	}
+
+	public int getId(){
+		return id;
+	}
+
+	public void setName(String name){
+		this.name = name;
+	}
+
+	public String getName(){
+		return name;
+	}
+
+	public void setLocation(Locationpojo location){
+		this.location = location;
+	}
+
+	public Locationpojo getLocation(){
+		return location;
+	}
+
+	@Override
+ 	public String toString(){
+		return 
+			"US13LocationPojopojo{" + 
+			"id = '" + id + '\'' + 
+			",name = '" + name + '\'' + 
+			",location = '" + location + '\'' + 
+			"}";
+		}
+}
