@@ -23,7 +23,7 @@ import org.junit.runner.RunWith;
 
 
       
-        tags = "",
+        tags = "@API-US-04-10",
 
 
 

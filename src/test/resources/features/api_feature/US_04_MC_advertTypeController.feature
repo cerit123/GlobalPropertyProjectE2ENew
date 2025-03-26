@@ -61,7 +61,7 @@
 
 
 
-    @API-US-10@apiAdmin
+    @API-US-10 @apiAdmin
   Scenario: GetCitiesId | city idleri getirilir bilgilerini görebilmeli
     Given   city idsi almak için url düzenlenir
     When    city idleri getirilir ve bir list e atılır
