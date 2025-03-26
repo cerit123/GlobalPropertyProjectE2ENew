@@ -1,16 +1,16 @@
 @US15DB
 
-Feature:  Contacts Tablosu Data Kontrolü
+Feature:  advert_types Tablosu Data Kontrolü
 
   @US15TC01DB
-  Scenario: Contacts sutun isimlerini ve bilgilerini doğrula
+  Scenario: advert_types sutun isimlerini ve bilgilerini doğrula
     Given Veritabanına bağlanılır.
-    When  Contacts sütun tablosu çağrılır
-    And   Contacts sütundaki veriler eksiksiz gelmeli
+    When  advert_types sutun tablosu çağrılır
+    And   advert_types sutun tablosundaki veriler eksiksiz gelmeli
 
 
   @US15TC02DB
-  Scenario:  Contacts sutun isimlerini ve bilgilerini doğrula
+  Scenario:  advert_types sutun isimlerini ve bilgilerini doğrula
     Given Veritabanına bağlanılır.
-    When  Contacts tablosunun id, created_at,email,first_name,last_name,message,status sütunları getirilir.
-    And   Contacts tablosundan 2409 , 2413 id numaralı sütunlar çağrılır.
+    When  advert_types tablosunun id, built_in, title sütunları getirilir.
+    And   advert_types tablosundan 1, 34 id numaralı sütunlar çağrılır.

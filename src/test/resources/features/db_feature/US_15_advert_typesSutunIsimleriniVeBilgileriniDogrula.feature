@@ -13,4 +13,4 @@ Feature:  advert_types Tablosu Data Kontrolü
   Scenario:  advert_types sutun isimlerini ve bilgilerini doğrula
     Given Veritabanına bağlanılır.
     When  advert_types tablosunun id, built_in, title sütunları getirilir.
-    And   advert_types tablosundan 1, 34 id numaralı sütunlar çağrılır.
+    And   advert_types tablosundan 1, 35 id numaralı sütunlar çağrılır.

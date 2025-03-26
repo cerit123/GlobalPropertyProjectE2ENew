@@ -4,6 +4,7 @@ import GetlandEstate.utilities.ConfigReader;
 import GetlandEstate.utilities.Driver;
 import GetlandEstate.utilities.WaitUtils;
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
@@ -235,6 +236,7 @@ AdvertTypesPage advertTypesPage = new AdvertTypesPage();
     public void turTalepleriListesininGörüntülendiğiDoğrulanır() {
 
     }
+
 
 
 }
