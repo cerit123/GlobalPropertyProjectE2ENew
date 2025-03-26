@@ -109,14 +109,14 @@ public class US14_SütunIsimleriVeBilgileriStepdefs {
         DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS");
         LocalDateTime created_atFormat = LocalDateTime.parse(resultSet1.getString("created_at"), inputFormatter);
         LocalDateTime updated_atFormat = LocalDateTime.parse(resultSet1.getString("updated_at"), inputFormatter);
-        LocalDate tour_dateFormat = LocalDate.parse(resultSet1.getString("tour_date"), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-        LocalTime tour_timeFormat = LocalTime.parse(resultSet1.getString("tour_time"), DateTimeFormatter.ofPattern("HH:mm:ss"));
+        LocalDate tour_dateFormat = LocalDate.parse(resultSet1.getString("tour_date"), DateTimeFormatter.ofPattern("yyyy-MM-dd",Locale.ENGLISH));
+        LocalTime tour_timeFormat = LocalTime.parse(resultSet1.getString("tour_time"), DateTimeFormatter.ofPattern("HH:mm:ss",Locale.ENGLISH));
 
-        DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("MMM d, yyyy, h:mm:ssa");
+        DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("MMM d, yyyy, h:mm:ssa",Locale.ENGLISH);
         String created_at = created_atFormat.format(outputFormatter);
         String updated_at = updated_atFormat.format(outputFormatter);
-        String tour_date = tour_dateFormat.format(DateTimeFormatter.ofPattern("MMM d, yyyy"));
-        String tour_time = tour_timeFormat.format(DateTimeFormatter.ofPattern("h:mm:ss"));
+        String tour_date = tour_dateFormat.format(DateTimeFormatter.ofPattern("MMM d, yyyy",Locale.ENGLISH));
+        String tour_time = tour_timeFormat.format(DateTimeFormatter.ofPattern("h:mm:ss",Locale.ENGLISH));
 
 
 

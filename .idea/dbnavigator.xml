@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DBNavigator.Project.DDLFileAttachmentManager">
+    <mappings />
+    <preferences />
+  </component>
   <component name="DBNavigator.Project.DataEditorManager">
     <record-view-column-sorting-type value="BY_INDEX" />
     <value-preview-text-wrapping value="false" />
@@ -49,7 +53,9 @@ SELECT * FROM tour_requests WHERE id = 1]]></console>
     <last-used-providers />
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files />
+    <open-files>
+      <object connection-id="bae3c097-8715-46eb-a12d-d2d3a98acb22" object-ref="consoles/Connection" />
+    </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="bae3c097-8715-46eb-a12d-d2d3a98acb22" />
@@ -605,5 +611,6 @@ SELECT * FROM tour_requests WHERE id = 1]]></console>
   </component>
   <component name="DBNavigator.Project.StatementExecutionManager">
     <execution-variables />
+    <execution-variable-types />
   </component>
 </project>
