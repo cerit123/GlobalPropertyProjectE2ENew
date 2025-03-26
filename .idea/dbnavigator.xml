@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DBNavigator.Project.DDLFileAttachmentManager">
-    <mappings />
-    <preferences />
-  </component>
   <component name="DBNavigator.Project.DataEditorManager">
     <record-view-column-sorting-type value="BY_INDEX" />
     <value-preview-text-wrapping value="false" />
     <value-preview-pinned value="false" />
+  </component>
+  <component name="DBNavigator.Project.DataExportManager">
+    <export-instructions>
+      <create-header value="true" />
+      <friendly-headers value="false" />
+      <quote-values-containing-separator value="true" />
+      <quote-all-values value="false" />
+      <value-separator value="" />
+      <file-name value="" />
+      <file-location value="" />
+      <scope value="GLOBAL" />
+      <destination value="FILE" />
+      <format value="EXCEL" />
+      <charset value="windows-1254" />
+      <charset value="windows-1254" />
+    </export-instructions>
   </component>
   <component name="DBNavigator.Project.DatabaseAssistantManager">
     <assistants>
@@ -27,6 +39,7 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="bae3c097-8715-46eb-a12d-d2d3a98acb22">
+<<<<<<< HEAD
       <console name="Connection_Property" type="STANDARD" schema="public" session="Main"><![CDATA[select * from advert_types]]></console>
     </connection>
     <connection id="40c8c081-a33d-46a2-8f7f-e941279ef979">
@@ -34,6 +47,15 @@
     </connection>
     <connection id="55a003e2-2295-4b5f-abf8-85c755a65bed">
       <console name="Connection 1" type="STANDARD" schema="postgres" session="Main" />
+=======
+      <console name="Connection" type="STANDARD" schema="public" session="Main"><![CDATA[SELECT column_name
+                FROM information_schema.columns
+                WHERE table_name = 'tour_requests'
+
+
+SELECT * FROM tour_requests WHERE id = 1]]></console>
+      <console name="Connection_Property" type="STANDARD" schema="public" session="Main"><![CDATA[select * from countries]]></console>
+>>>>>>> master
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
@@ -52,6 +74,9 @@
     <filter-actions connection-id="bae3c097-8715-46eb-a12d-d2d3a98acb22" dataset="pg_catalog.pg_collation" active-filter-id="" />
     <filter-actions connection-id="bae3c097-8715-46eb-a12d-d2d3a98acb22" dataset="information_schema.sql_features" active-filter-id="" />
   </component>
+  <component name="DBNavigator.Project.EditorStateManager">
+    <last-used-providers />
+  </component>
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />
   </component>
@@ -61,11 +86,24 @@
       <group-entries value="true" />
       <execution-inputs />
     </execution-history>
+<<<<<<< HEAD
     <execution-variables-cache />
+=======
+    <argument-values-cache />
+  </component>
+  <component name="DBNavigator.Project.ObjectDependencyManager">
+    <last-used-dependency-type value="INCOMING" />
+>>>>>>> master
   </component>
   <component name="DBNavigator.Project.ObjectQuickFilterManager">
     <last-used-operator value="EQUAL" />
     <filters />
+  </component>
+  <component name="DBNavigator.Project.ParserDiagnosticsManager">
+    <diagnostics-history />
+  </component>
+  <component name="DBNavigator.Project.ScriptExecutionManager" clear-outputs="true">
+    <recently-used-interfaces />
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
@@ -788,6 +826,5 @@
   </component>
   <component name="DBNavigator.Project.StatementExecutionManager">
     <execution-variables />
-    <execution-variable-types />
   </component>
 </project>

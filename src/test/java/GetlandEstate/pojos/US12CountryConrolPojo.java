@@ -1,0 +1,54 @@
+package GetlandEstate.pojos;
+
+import java.io.Serializable;
+
+public class US12CountryConrolPojo implements Serializable {
+	private int id;
+	private String name;
+	private LocationPojo location;
+
+	public US12CountryConrolPojo() {
+	}
+
+	public US12CountryConrolPojo(int id, String name, LocationPojo location) {
+		this.id = id;
+		this.name = name;
+		this.location = location;
+	}
+
+
+
+	public void setId(int id){
+		this.id = id;
+	}
+
+	public int getId(){
+		return id;
+	}
+
+	public void setName(String name){
+		this.name = name;
+	}
+
+	public String getName(){
+		return name;
+	}
+
+	public void setLocation(LocationPojo location){
+		this.location = location;
+	}
+
+	public LocationPojo getLocation(){
+		return location;
+	}
+
+	@Override
+ 	public String toString(){
+		return 
+			"US12CountryConrolPojo{" + 
+			"id = '" + id + '\'' + 
+			",name = '" + name + '\'' + 
+			",location = '" + location + '\'' + 
+			"}";
+		}
+}
