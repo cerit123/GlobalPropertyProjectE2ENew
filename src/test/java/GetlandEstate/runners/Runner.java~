@@ -17,7 +17,13 @@ import org.junit.runner.RunWith;
 
         glue = {"GetlandEstate/stepdefs","GetlandEstate/hooks"},
 
-        tags = "@US14DB",
+
+
+   
+
+
+      
+        tags = " @US-6",
 
 
 
