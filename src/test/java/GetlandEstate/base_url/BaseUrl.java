@@ -16,4 +16,13 @@ public class BaseUrl {
                 .addHeader("Authorization", "Bearer "+ Authentication.generateToken(email,password))
                 .build();
     }
+
+    public static RequestSpecification specNoAuth;
+
+    public static void setUpNoAuth() throws Exception {
+        specNoAuth = new RequestSpecBuilder()
+                .setBaseUri(ConfigReader.getProperty("baseUrl"))
+                .setContentType(ContentType.JSON)
+                .build();
+    }
 }

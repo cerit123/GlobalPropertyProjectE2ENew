@@ -1,3 +1,5 @@
+
+@US-6
 Feature: Cities sutun isimlerini ve bilgilerini  dogrula
 
   @US-06TC01
