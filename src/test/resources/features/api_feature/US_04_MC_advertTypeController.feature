@@ -8,9 +8,10 @@
       When    yetkili yapılan post işlemi için response alınır
       Then    to do assertion- ilanın verildiği doğrulanır
 
+    @NoAuth
     Scenario: TC-02 | yetkisiz olarak reklam ilanı verilememeli
       Given   token alınmaz
-      And     set the url
+      And     set the url noauth
       And     yetkisiz post işlemi için payload oluşturulur
       When    yetkisiz yapılan post işlemi response alınır
       Then    to do assertion- 401 kodu ile "Full authentication is required to access this resource" mesajı görülür
@@ -21,16 +22,18 @@
       When   oluşturulan advert type get işlemi için response alınır
       Then   to do assertion- 200 status code ile verilen ilan görünür
 
+    @NoAuth
     Scenario: TC-04 | id numarası ile verilen ilanınları yetkisi olmadan görememeli
       Given  token alınmaz
-      When   set the url (url nin sonuna oluşturlan reklamın id si eklenir)
-      And    oluşturulan advert type get işlemi için response alınır
+      When   set the url (yetkisiz olarak url nin sonuna oluşturlan reklamın id si eklenir)
+      And    (yetkisiz olarak) oluşturulan advert type get işlemi için response alınır
       Then   to do assertion- 401 kodu ile "Full authentication is required to access this resource" mesajı alınmalı
 
+    @NoAuth
     Scenario: TC-05 | yetkisi olmadan da bütün ilanları görebilmeli
       Given  token alınmaz
-      When   set the url (url nin sonuna all eklenir)
-      And    oluşturulan advert type get işlemi için response alınır
+      When   (yetkisiz)set the url (url nin sonuna all eklenir)
+      And    (yetkisiz)oluşturulan advert type get işlemi için response alınır
       Then   to do assertion- 200 kodu ile tüm ilanlar görünür
 
       @apiAdmin
@@ -40,10 +43,11 @@
       And    değiştirilen advert type put işlemi için response alınır
       Then   to do assertion- 200 status code ile verilen ilan görünür
 
+    @NoAuth
     Scenario: TC-07 | yetkisi omadan ilan üzerinde değişiklik yapamamalı
-      Given  set the url (url nin sonuna oluşturlan reklamın id si eklenir)
+      Given  (yetkisiz)set the url (url nin sonuna oluşturlan reklamın id si eklenir)
       When   set the expected data title de yapılmak istenen değişiklikler yazılır
-      And    yetkisiz olarak değiştirilmek istenen advert type put işlemi için response alınır
+      And    (yetkisiz olarak) olarak değiştirilmek istenen advert type put işlemi için response alınır
       Then   to do assertion- 401 kodu ile "Full authentication is required to access this resource" mesajı alınmalı
 
       @apiAdmin
@@ -53,10 +57,11 @@
       And    delete islemi için response oluşturulur
       Then   to do assertion- 200 status code ile verilen ilan görünür
 
+    @NoAuth
     Scenario: TC-09 | yetkisiz olarak ilanlar silinememeli
-      Given  set the url (url nin sonuna oluşturlan reklamın yeni id si eklenir)
+      Given  (yetkisiz)set the url (url nin sonuna oluşturlan reklamın yeni id si eklenir)
       When   payloadta islem yapılmaz
-      And    delete islemi için yeni id li advert typeresponse oluşturulur
+      And    (yetkisiz)delete islemi için yeni id li advert typeresponse oluşturulur
       Then   to do assertion- 401 kodu ile "Full authentication is required to access this resource" mesajı alınmalı
 
 
@@ -74,11 +79,11 @@
     And     get işlemi ile seçilen ilçe response atılır
     Then    to do assertion- 200 status code ile verilen ilan görünür
 
-    @API-US-10
+    @API-US-10 @NoAuth
   Scenario: TC02 | yetkilendirilmemiş hesap ile ilçe bilgilerini görememeli
-    Given   set the url (url adresinin sonun rastgele cityId girilir)
-    When    get işlemi ile seçilen ilçe response atılır
-    Then   to do assertion- 401 kodu ile "Full authentication is required to access this resource" mesajı alınmalı
+    Given   (yetkisiz)set the url (url adresinin sonun rastgele cityId girilir)
+    When    (yetkisiz)get işlemi ile seçilen ilçe response atılır
+    Then    to do assertion- 401 kodu city tc de ile Full authentication is required to access this resource mesajı alınmalı
 
 
 

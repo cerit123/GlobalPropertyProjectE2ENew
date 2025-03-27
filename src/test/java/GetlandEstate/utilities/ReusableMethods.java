@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.Duration;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -164,4 +165,22 @@ public class ReusableMethods {
             System.out.println("Screenshot alınamadı!");
         }
     }
+
+    public static List<LocalDate> get7DaysBeforeToday() {
+
+        LocalDate today = LocalDate.now();
+        LocalDate eightDaysAgo = today.minusDays(7);
+
+        List<LocalDate> dates = new ArrayList<>();
+        for (LocalDate date = eightDaysAgo; !date.isAfter(today); date = date.plusDays(1)) {
+            dates.add(date);
+        }
+        return dates;
+    }
+
+    public static String stringDate(List<LocalDate> list, int ind){
+
+         return list.get(ind).toString();
+    }
+
 }

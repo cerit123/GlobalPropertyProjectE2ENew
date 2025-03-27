@@ -14,12 +14,14 @@ import java.util.List;
 import java.util.Random;
 
 import static GetlandEstate.base_url.BaseUrl.spec;
+import static GetlandEstate.base_url.BaseUrl.specNoAuth;
 import static io.restassured.RestAssured.given;
 
 public class US04_API_MC_Stepdefs {
     static Us04postRequestPayloadPOJO payload;
     static Us04postRequestPayloadPOJO gecersizPayload;
    static Response response;
+   static Response response2;
     static Response gecersizResponse;
     static Response responseCity;
     Faker faker;
@@ -61,6 +63,10 @@ public class US04_API_MC_Stepdefs {
     public void tokenAlınmaz() {
 
     }
+    @And("set the url noauth")
+    public void setTheUrlNoauth() {
+        specNoAuth.pathParam("first","advert-types");
+    }
 
     @And("yetkisiz post işlemi için payload oluşturulur")
     public void yetkisizPostIşlemiIçinPayloadOluşturulur() {
@@ -70,9 +76,8 @@ public class US04_API_MC_Stepdefs {
 
     @When("yetkisiz yapılan post işlemi response alınır")
     public void yetkisizYapılanPostIşlemiResponseAlınır() {
-        gecersizResponse = given(spec).body(gecersizPayload).post("{first}");
-        ikinciId = gecersizResponse.jsonPath().getInt("id");
-        gecersizResponse.prettyPrint();
+        gecersizResponse = given(specNoAuth).body(gecersizPayload).post("{first}");
+
     }
 
     @Then("to do assertion- {int} kodu ile {string} mesajı görülür")
@@ -95,12 +100,20 @@ public class US04_API_MC_Stepdefs {
 
     @Then("to do assertion- {int} status code ile verilen ilan görünür")
     public void toDoAssertionStatusCodeIleVerilenIlanGörünür(int statusCode) {
-        response.prettyPrint();
         Assert.assertEquals(statusCode,response.statusCode());
-
     }
 
+
     //---TC04---
+    @When("set the url \\(yetkisiz olarak url nin sonuna oluşturlan reklamın id si eklenir)")
+    public void setTheUrlYetkisizOlarakUrlNinSonunaOluşturlanReklamınIdSiEklenir() {
+        specNoAuth.pathParams("first","advert-types","second",id);
+    }
+
+    @And("\\(yetkisiz olarak) oluşturulan advert type get işlemi için response alınır")
+    public void yetkisizOlarakOluşturulanAdvertTypeGetIşlemiIçinResponseAlınır() {
+        response = given(specNoAuth).get("{first}/{second}");
+    }
     @Then("to do assertion- {int} kodu ile {string} mesajı alınmalı")
     public void toDoAssertionKoduIleMesajıAlınmalı(int statusCode, String message) {
         response.prettyPrint();
@@ -109,10 +122,17 @@ public class US04_API_MC_Stepdefs {
     }
 
     //---TC05---
-    @When("set the url \\(url nin sonuna all eklenir)")
-    public void setTheUrlUrlNinSonunaAllEklenir() {
-        spec.pathParams("first","advert-types","second","all");
+    @When("\\(yetkisiz)set the url \\(url nin sonuna all eklenir)")
+    public void yetkisizSetTheUrlUrlNinSonunaAllEklenir() {
+        specNoAuth.pathParams("first","advert-types","second","all");
     }
+
+    @And("\\(yetkisiz)oluşturulan advert type get işlemi için response alınır")
+    public void yetkisizOluşturulanAdvertTypeGetIşlemiIçinResponseAlınır() {
+        response = given(specNoAuth).get("{first}/{second}");
+    }
+
+
 
 
     @Then("to do assertion- {int} kodu ile tüm ilanlar görünür")
@@ -124,7 +144,7 @@ public class US04_API_MC_Stepdefs {
     @When("set the expected data- title de yapılmak istenen değişiklik yazılır")
     public void setTheExpectedDataTitleDeYapılmakIstenenDeğişiklikYazılır() {
         Faker faker = new Faker();
-        payload.setTitle(faker.gameOfThrones().house());
+        payload.setTitle(faker.gameOfThrones().house()+"a");
     }
 
     @And("değiştirilen advert type put işlemi için response alınır")
@@ -134,16 +154,25 @@ public class US04_API_MC_Stepdefs {
     }
 
     //---TC07---
+    @Given("\\(yetkisiz)set the url \\(url nin sonuna oluşturlan reklamın id si eklenir)")
+    public void yetkisizSetTheUrlUrlNinSonunaOluşturlanReklamınIdSiEklenir() {
+        specNoAuth.pathParams("first","advert-types","second",id);
+    }
+
+
+
+
     @When("set the expected data title de yapılmak istenen değişiklikler yazılır")
     public void setTheExpectedDataTitleDeYapılmakIstenenDeğişikliklerYazılır() {
         Faker faker = new Faker();
         payload.setTitle(faker.animal().name());
     }
-
-    @And("yetkisiz olarak değiştirilmek istenen advert type put işlemi için response alınır")
-    public void yetkisizOlarakDeğiştirilmekIstenenAdvertTypePutIşlemiIçinResponseAlınır() {
-        response =given(spec).body(payload).put("{first}/{second}");
+    @And("\\(yetkisiz olarak) olarak değiştirilmek istenen advert type put işlemi için response alınır")
+    public void yetkisizOlarakOlarakDeğiştirilmekIstenenAdvertTypePutIşlemiIçinResponseAlınır() {
+        response =given(specNoAuth).body(payload).put("{first}/{second}");
     }
+
+
 
     //---TC08---
     @When("payloadta islem yapılmaz")
@@ -156,15 +185,18 @@ public class US04_API_MC_Stepdefs {
     }
 
     //---TC09---
-    @Given("set the url \\(url nin sonuna oluşturlan reklamın yeni id si eklenir)")
-    public void setTheUrlUrlNinSonunaOluşturlanReklamınYeniIdSiEklenir() {
-        spec.pathParams("first","advert-types","second",ikinciId);
+
+    @Given("\\(yetkisiz)set the url \\(url nin sonuna oluşturlan reklamın yeni id si eklenir)")
+    public void yetkisizSetTheUrlUrlNinSonunaOluşturlanReklamınYeniIdSiEklenir() {
+        specNoAuth.pathParams("first","advert-types","second",id);
     }
 
-    @And("delete islemi için yeni id li advert typeresponse oluşturulur")
-    public void deleteIslemiIçinYeniIdLiAdvertTyperesponseOluşturulur() {
-        response = given(spec).delete("{first}/{second}");
+    @And("\\(yetkisiz)delete islemi için yeni id li advert typeresponse oluşturulur")
+    public void yetkisizDeleteIslemiIçinYeniIdLiAdvertTyperesponseOluşturulur() {
+        response = given(specNoAuth).delete("{first}/{second}");
     }
+
+
 
     //city id
     @Given("city idsi almak için url düzenlenir")
@@ -183,8 +215,6 @@ public class US04_API_MC_Stepdefs {
         JsonPath jsonPath = responseCity.jsonPath();
         cityIds = jsonPath.getList("id", Integer.class);
 
-        // Listeyi ekrana yazdırma (Test için)
-        System.out.println("City IDs: " + cityIds);
     }
     //us10-tc01
     @Given("set the url \\(url adresinin sonun rastgele cityId girilir)")
@@ -200,12 +230,31 @@ public class US04_API_MC_Stepdefs {
         response = given(spec)
                 .get("{first}/{second}/{third}");
 
-        // Test için seçilen random city ID'yi yazdırma
-        System.out.println("Selected random city ID: " + randomCityId);
-        System.out.println("responseCity = " + responseCity);
-        response.prettyPrint();
     }
 
-    //us10-tc02
 
+
+    //us10-tc02
+    @Given("\\(yetkisiz)set the url \\(url adresinin sonun rastgele cityId girilir)")
+    public void yetkisizSetTheUrlUrlAdresininSonunRastgeleCityIdGirilir() {
+        Random random = new Random();
+        randomCityId = cityIds.get(random.nextInt(cityIds.size()));
+        System.out.println("randomCityId = " + randomCityId);
+        specNoAuth.pathParams("first","districts","second","search","third",randomCityId);
+    }
+
+    @When("\\(yetkisiz)get işlemi ile seçilen ilçe response atılır")
+    public void yetkisizGetIşlemiIleSeçilenIlçeResponseAtılır() {
+        response2 = given(specNoAuth)
+                .get("{first}/{second}/{third}");
+
+    }
+
+
+    @Then("to do assertion- {int} kodu city tc de ile Full authentication is required to access this resource mesajı alınmalı")
+    public void toDoAssertionKoduCityTcDeIleFullAuthenticationIsRequiredToAccessThisResourceMesajıAlınmalı(int statusCode) {
+        Assert.assertEquals(statusCode, response2.statusCode());
+        Assert.assertEquals("Full authentication is required to access this resource", response2.jsonPath().get("message"));
+
+    }
 }
