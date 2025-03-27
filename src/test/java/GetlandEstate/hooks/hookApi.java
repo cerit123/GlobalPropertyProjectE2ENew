@@ -10,6 +10,7 @@ import GetlandEstate.utilities.WaitUtils;
 import io.cucumber.java.Before;
 
 import static GetlandEstate.base_url.BaseUrl.setUp;
+import static GetlandEstate.base_url.BaseUrl.setUpNoAuth;
 
 public class hookApi {
 
@@ -38,6 +39,17 @@ public class hookApi {
     public void apiManager() {
         try {
             setUp(ConfigReader.getProperty("emailManager"), ConfigReader.getProperty("passwordManager"));
+        } catch (Exception e) {
+            System.err.println("API Manager setup failed: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+    }
+
+    @Before("@NoAuth")
+    public void NoAuth() {
+        try {
+            setUpNoAuth();
         } catch (Exception e) {
             System.err.println("API Manager setup failed: " + e.getMessage());
             e.printStackTrace();
