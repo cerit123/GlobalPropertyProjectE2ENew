@@ -46,16 +46,16 @@
 
 
 SELECT * FROM tour_requests WHERE id = 1]]></console>
-      <console name="Connection_Property" type="STANDARD" schema="public" session="Main"><![CDATA[select * from countries
-select column_name from information_schema.columns where table_name = 'countries';
-select * from countries where name = 'France';]]></console>
+      <console name="Connection_Property" type="STANDARD" schema="public" session="Main"><![CDATA[select * from countries]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
     <last-used-providers />
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files />
+    <open-files>
+      <object connection-id="bae3c097-8715-46eb-a12d-d2d3a98acb22" object-ref="consoles/Connection" />
+    </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="bae3c097-8715-46eb-a12d-d2d3a98acb22" />

@@ -10,11 +10,14 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 public class US14_SütunIsimleriVeBilgileriStepdefs {
 
@@ -86,7 +89,7 @@ public class US14_SütunIsimleriVeBilgileriStepdefs {
     @And("Beklenen tour_requests dataları düzenlenir")
     public void beklenenTour_requestsDatalarıDüzenlenir() {
 
-       expectedData = new US14_DB_tour_requestsPojo(1,"Aug 6, 2024, 7:13:23 PM","Aug 9, 2024, 12:00:01AM",2,"Aug 8, 2024, 12:00:00AM","Jan 1, 1970, 6:00:00AM",37,39,8);
+       expectedData = new US14_DB_tour_requestsPojo(1,"Aug 6, 2024, 7:13:23PM","Aug 9, 2024, 12:00:01AM",2,"Aug 8, 2024, 12:00:00AM","Jan 1, 1970, 6:00:00AM",37,39,8);
 
 
     }
@@ -106,14 +109,14 @@ public class US14_SütunIsimleriVeBilgileriStepdefs {
         DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS");
         LocalDateTime created_atFormat = LocalDateTime.parse(resultSet1.getString("created_at"), inputFormatter);
         LocalDateTime updated_atFormat = LocalDateTime.parse(resultSet1.getString("updated_at"), inputFormatter);
-        LocalDateTime tour_dateFormat = LocalDateTime.parse(resultSet1.getString("tour_date"), inputFormatter);
-        LocalDateTime tour_timeFormat = LocalDateTime.parse(resultSet1.getString("tour_time"), inputFormatter);
+        LocalDate tour_dateFormat = LocalDate.parse(resultSet1.getString("tour_date"), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        LocalTime tour_timeFormat = LocalTime.parse(resultSet1.getString("tour_time"), DateTimeFormatter.ofPattern("HH:mm:ss"));
 
         DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("MMM d, yyyy, h:mm:ssa");
         String created_at = created_atFormat.format(outputFormatter);
         String updated_at = updated_atFormat.format(outputFormatter);
-        String tour_date = tour_dateFormat.format(outputFormatter);
-        String tour_time = tour_timeFormat.format(outputFormatter);
+        String tour_date = tour_dateFormat.format(DateTimeFormatter.ofPattern("MMM d, yyyy"));
+        String tour_time = tour_timeFormat.format(DateTimeFormatter.ofPattern("h:mm:ss"));
 
 
 
