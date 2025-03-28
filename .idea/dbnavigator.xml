@@ -53,9 +53,7 @@ SELECT * FROM tour_requests WHERE id = 1]]></console>
     <last-used-providers />
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="bae3c097-8715-46eb-a12d-d2d3a98acb22" object-ref="consoles/Connection" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="bae3c097-8715-46eb-a12d-d2d3a98acb22" />
