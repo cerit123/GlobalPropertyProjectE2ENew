@@ -235,26 +235,21 @@ public class US04_API_MC_Stepdefs {
 
 
     //us10-tc02
-    @Given("\\(yetkisiz)set the url \\(url adresinin sonun rastgele cityId girilir)")
-    public void yetkisizSetTheUrlUrlAdresininSonunRastgeleCityIdGirilir() {
-        Random random = new Random();
-        randomCityId = cityIds.get(random.nextInt(cityIds.size()));
-        System.out.println("randomCityId = " + randomCityId);
-        specNoAuth.pathParams("first","districts","second","search","third",randomCityId);
+
+
+    @Given("set the url \\(url adresinin sonun rastgele all girilir)")
+    public void setTheUrlUrlAdresininSonunRastgeleAllGirilir() {
+        spec.pathParams("first","districts","second","all");
     }
 
-    @When("\\(yetkisiz)get işlemi ile seçilen ilçe response atılır")
-    public void yetkisizGetIşlemiIleSeçilenIlçeResponseAtılır() {
-        response2 = given(specNoAuth)
-                .get("{first}/{second}/{third}");
-
+    @When("get işlemi ile bütün ilçeler response atılır")
+    public void getIşlemiIleBütünIlçelerResponseAtılır() {
+        response = given(spec)
+                .get("{first}/{second}");
     }
 
-
-    @Then("to do assertion- {int} kodu city tc de ile Full authentication is required to access this resource mesajı alınmalı")
-    public void toDoAssertionKoduCityTcDeIleFullAuthenticationIsRequiredToAccessThisResourceMesajıAlınmalı(int statusCode) {
-        Assert.assertEquals(statusCode, response2.statusCode());
-        Assert.assertEquals("Full authentication is required to access this resource", response2.jsonPath().get("message"));
-
+    @Then("to do assertion statusCode {int} olmalıdır")
+    public void toDoAssertionStatusCodeOlmalıdır(int statusCode) {
+        Assert.assertEquals(statusCode,response.statusCode());
     }
 }
