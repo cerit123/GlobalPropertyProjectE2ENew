@@ -67,10 +67,11 @@ public class US04_SütunİsimleriniDoğrulamaStepdefs {
 
     @And("Contacts tablosundan {int} , {int} id numaralı sütunlar çağrılır.")
     public void contactsTablosundanIdNumaralıSütunlarÇağrılır(int id1, int id2) throws SQLException {
-        // Veritabanı sorgusu
-        String query = "SELECT * FROM contacts WHERE id IN (?, ?)";
+        String query = "SELECT id, created_at, email, first_name, last_name, message, status FROM contacts WHERE id IN (?, ?)";
 
-        // PreparedStatement ile sorgu hazırlanıyor
+        // Veritabanı bağlantısını burada sağlamalısınız
+        // connection = DriverManager.getConnection(...);  // Bağlantı kodunu burada yazabilirsiniz.
+
         try (PreparedStatement pstmt = connection.prepareStatement(query)) {
             pstmt.setInt(1, id1);  // Birinci ID
             pstmt.setInt(2, id2);  // İkinci ID
@@ -79,11 +80,11 @@ public class US04_SütunİsimleriniDoğrulamaStepdefs {
                 boolean id1Exists = false;
                 boolean id2Exists = false;
 
-                // Sonuçları döngüyle işliyoruz
+                // Sonuçları işliyoruz
                 while (resultSet.next()) {
                     int currentId = resultSet.getInt("id");
 
-                    // ID1 ve ID2'yi kontrol ediyoruz
+                    // ID'lerin varlığını kontrol ediyoruz
                     if (currentId == id1) id1Exists = true;
                     if (currentId == id2) id2Exists = true;
 
@@ -102,12 +103,13 @@ public class US04_SütunİsimleriniDoğrulamaStepdefs {
                 Assert.assertTrue("ID2 verisi bulunamadı!", id2Exists);
             }
         } catch (SQLException e) {
-            // Veritabanı hata durumunda loglama
+            // Veritabanı hatası durumunda loglama
             e.printStackTrace();
             throw e; // Hata tekrar fırlatılıyor
         }
+        }
                 }
-            }
+
 
 
 
