@@ -1,8 +1,8 @@
 @API
-@apiAdmin
+
   @US-06
 Feature: Contact Massage Management
-
+  @apiAdmin
   @US-06@TC01
   Scenario:Yeni bir iletisim mesaji olusturulabilmeli
     Given Base URL kullanilir
