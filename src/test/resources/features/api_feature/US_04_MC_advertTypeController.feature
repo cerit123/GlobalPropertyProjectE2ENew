@@ -79,12 +79,11 @@
     And     get işlemi ile seçilen ilçe response atılır
     Then    to do assertion- 200 status code ile verilen ilan görünür
 
-    @API-US-10 @NoAuth
-  Scenario: TC02 | yetkilendirilmemiş hesap ile ilçe bilgilerini görememeli
-    Given   (yetkisiz)set the url (url adresinin sonun rastgele cityId girilir)
-    When    (yetkisiz)get işlemi ile seçilen ilçe response atılır
-    Then    to do assertion- 401 kodu city tc de ile Full authentication is required to access this resource mesajı alınmalı
-
+    @API-US-10 @apiAdmin
+  Scenario: TC02 | yetkilendirilmiş hesap ile tüm ilçe bilgilerini görebilmeli
+    Given   set the url (url adresinin sonun rastgele all girilir)
+    When    get işlemi ile bütün ilçeler response atılır
+    Then    to do assertion statusCode 200 olmalıdır
 
 
 

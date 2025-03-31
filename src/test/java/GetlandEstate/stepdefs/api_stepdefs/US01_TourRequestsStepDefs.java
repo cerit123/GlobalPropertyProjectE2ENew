@@ -53,6 +53,7 @@ public class US01_TourRequestsStepDefs {
 
     @And("Get request gonderilir ve response alinir")
     public void getRequestGonderilirVeResponseAlinir() {
+
         response = given(spec).when().get("{first}/{second}");
     }
 
@@ -90,6 +91,7 @@ public class US01_TourRequestsStepDefs {
 
     @Given("Url tour request gormek icin duzenlenir")
     public void urlTourRequestGormekIcinDuzenlenir() {
+
         spec.pathParams("first", "tour-requests", "second", "admin");
     }
 
@@ -102,11 +104,13 @@ public class US01_TourRequestsStepDefs {
 
     @And("Delete request gonderilir ve response alinir")
     public void deleteRequestGonderilirVeResponseAlinir() {
+
         response = given(spec).when().delete("{first}/{second}");
     }
     //US07
     @Given("Url tum raporlari gormek icin duzenlenir")
     public void urlTumRaporlariGormekIcinDuzenlenir() {
+
         spec.pathParam("first", "report");
     }
 

@@ -40,13 +40,13 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="bae3c097-8715-46eb-a12d-d2d3a98acb22">
-      <console name="Connection" type="STANDARD" schema="public" session="Main">SELECT column_name
+      <console name="Connection" type="STANDARD" schema="public" session="Main"><![CDATA[SELECT column_name
                 FROM information_schema.columns
                 WHERE table_name = 'tour_requests'
 
 
-SELECT * FROM tour_requests WHERE id = 1</console>
-      <console name="Connection_Property" type="STANDARD" schema="public" session="Main">select * from countries</console>
+SELECT * FROM tour_requests WHERE id = 1]]></console>
+      <console name="Connection_Property" type="STANDARD" schema="public" session="Main"><![CDATA[select * from countries]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
@@ -609,6 +609,5 @@ SELECT * FROM tour_requests WHERE id = 1</console>
   </component>
   <component name="DBNavigator.Project.StatementExecutionManager">
     <execution-variables />
-    <execution-variable-types />
   </component>
 </project>
